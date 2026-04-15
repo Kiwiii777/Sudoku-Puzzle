@@ -44,9 +44,20 @@ public class SudokuGenerator {
     }
 
     public static void main(String[] args) {
-        SudokuGenerator board = new SudokuGenerator();
-        board.initializeBoard();
-        board.generate();
-        board.printBoard();
+        double startTotalTime = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            double startTime = System.currentTimeMillis();
+            SudokuGenerator board = new SudokuGenerator();
+            board.initializeBoard();
+            board.generate();
+            board.printBoard();
+            double endTime = System.currentTimeMillis();
+
+            double elapstedTime = endTime - startTime;
+            System.out.println("\n\nTime: " + elapstedTime + " milliseconds");
+        }
+        double endTotalTime = System.currentTimeMillis();
+        double timeAverage = (endTotalTime - startTotalTime) / 1000000;
+        System.out.println("Total time: " + (endTotalTime - startTotalTime) + " | " + "Average Time: " + timeAverage + " milliseconds");
     }
 }
